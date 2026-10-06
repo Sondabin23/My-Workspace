@@ -30,6 +30,7 @@ class AnalysisTests(unittest.TestCase):
         self.assertEqual(ds["ages"], list(range(101)))
         self.assertEqual(ds["encoding"], "cp949")
         self.assertEqual(ds["period"], "2020년 9월")
+        self.assertEqual(ds["series"], "2020년09월_계")
         result = analyze_region(ds, 0)
         self.assertEqual(result["total"], 9699232)
         self.assertEqual(result["region"], "서울특별시")

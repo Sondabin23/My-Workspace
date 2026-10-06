@@ -123,7 +123,7 @@ def main():
         st.warning(f'숫자 형식 오류가 있는 지역 {int(dataset["bad_rows"].sum())}개가 있습니다. 해당 지역은 분석할 수 없습니다.')
     if dataset["schema"]["total_column"] is None:
         st.info("총인구 열을 확인할 수 없어 연령별 인구 합계를 총인구로 사용합니다.")
-    if not re.search(r"(?:^|_)총(?:_|$)", series) and series != "연령별 인구":
+    if not re.search(r"(?:^|_)(?:총|계|합계|전체)(?:_|$)", series) and series != "연령별 인구":
         st.info("선택한 데이터 계열의 인구를 분석합니다. 남/여 계열은 전체 인구와 다릅니다.")
     with st.expander("데이터 구조와 지표 기준 확인"):
         st.write(f'지역명 열: {dataset["region_column"]} / 총인구 열: {dataset["schema"]["total_column"] or "연령별 합계 사용"}')

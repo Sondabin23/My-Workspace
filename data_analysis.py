@@ -79,7 +79,7 @@ def load_data(raw, selected_series=None):
     frame, encoding = read_csv_bytes(raw)
     region_column, series = discover_schema(frame)
     # 같은 파일에 남/여/총계 또는 여러 월이 있으면 화면에서 계열을 선택합니다.
-    default = next((s for s in series if re.search(r"(?:^|_)총(?:_|$)", s)), next(iter(series)))
+    default = next((s for s in series if re.search(r"(?:^|_)(?:총|계|합계|전체)(?:_|$)", s)), next(iter(series)))
     selected_series = selected_series or default
     if selected_series not in series:
         raise ValueError("선택한 연령 데이터 계열이 없습니다.")
