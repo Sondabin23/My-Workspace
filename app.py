@@ -169,7 +169,8 @@ def main():
         st.info("상위·하위 지역은 인구가 겹칠 수 있습니다. 지역별로 비교하며 선택 지역을 합산하지 않습니다.")
     for r in results:
         st.markdown(f'**{r["region"]}**')
-        columns = st.columns(5)
+        # 큰 인구수도 잘리지 않도록 카드 5개를 두 줄에 배치합니다.
+        columns = st.columns(3) + st.columns(2)
         columns[0].metric("총인구", f'{r["total"]:,}명')
         columns[1].metric("평균연령 (하한 추정)" if r["mean_is_lower_bound"] else "평균연령", f'{r["mean_age"]:.2f}세')
         columns[2].metric("청년층 비율", f'{r["groups"]["청년층"]["ratio"]:.2f}%')
