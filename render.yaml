@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://render.com/schema/render.yaml.json
+services:
+  - type: web
+    name: population-ai-dabin
+    runtime: python
+    plan: free
+    region: singapore
+    buildCommand: pip install -r requirements.txt -c constraints-render.txt && python setup_assets.py
+    startCommand: python -m streamlit run app.py --server.address=0.0.0.0 --server.port=$PORT
+    healthCheckPath: /_stcore/health
+    autoDeployTrigger: commit
+    envVars:
+      - key: OPENAI_MODEL
+        value: gpt-4.1-mini
+      - key: GEMINI_MODEL
+        value: gemini-2.5-flash
+# API 키는 기본 시연에 필요하지 않습니다. 실제 AI 사용 시 Render의 Environment에
+# OPENAI_API_KEY 또는 GEMINI_API_KEY를 직접 추가합니다. 저장소에는 키를 넣지 않습니다.

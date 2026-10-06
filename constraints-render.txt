@@ -1,0 +1,10 @@
+# 자동 테스트를 통과한 직접 의존성 버전입니다.
+streamlit==1.65.0
+pandas==2.3.3
+numpy==2.5.3
+matplotlib==3.11.2
+openai==2.54.0
+google-genai==2.28.0
+python-dotenv==1.2.4
+Markdown==3.11
+bleach==6.4.0
